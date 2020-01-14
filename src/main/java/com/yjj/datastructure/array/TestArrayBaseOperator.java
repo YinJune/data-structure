@@ -5,7 +5,7 @@ package com.yjj.datastructure.array;
  * @date: 2020/1/13 22:10
  * @description:
  */
-public class TestArray {
+public class TestArrayBaseOperator {
     public static void main(String[] args) {
         //数组长度不可变
         //创建一个数组
