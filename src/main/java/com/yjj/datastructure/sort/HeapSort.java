@@ -9,7 +9,7 @@ package com.yjj.datastructure.sort;
  */
 public class HeapSort {
     public static void main(String[] args) {
-
+        int[] arr = new int[]{5, 7, 2, 9, 0, 5, 7};
     }
 
     public void heapSort(int[] arr){
