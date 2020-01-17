@@ -55,9 +55,9 @@ public class BinarySearchTree {
         }
         //找到他的父节点
         TreeNode parent = searchParentNode(target);
-        if (parent == null) {
-            root = null;
-        }
+//        if (parent == null) {
+//            root = null;
+//        }
         //第一种情况，删除的节点是叶子结点
         if (targetNode.leftNode == null && targetNode.rightNode == null) {
             //判断是左节点还是右节点
@@ -67,9 +67,11 @@ public class BinarySearchTree {
                 parent.rightNode = null;
             }
         } else if (targetNode.leftNode != null && targetNode.rightNode != null) {
-            //第二种情况 删除的节点有两个子节点
-            //1.删除右子树值最小的节点、或渠道该节点的值
-            int min = deleteRightSubTreeMin(targetNode.leftNode);
+            //第二种情况 删除的节点有两个子节点 中序遍历结果为小->大顺序，根节点前继节点为左子树最大值，后继节点为右字数最小值
+            //1.删除右子树值最小的节点、或取到该节点的值
+            int min = deleteMin(targetNode.rightNode);
+            //把最小值放到删除节点
+            targetNode.value=min;
         } else {
             //第三种情况 删除的节点有一个儿子
             if (targetNode.leftNode != null) {
@@ -96,12 +98,26 @@ public class BinarySearchTree {
     /**
      * 删除中最小值
      *
-     * @param leftNode
+     * @param node
      * @return
      */
-    private int deleteRightSubTreeMin(TreeNode leftNode) {
-
-        return 0;
+    private int deleteMin(TreeNode node) {
+        TreeNode parentNode=null;
+        while (node.leftNode!=null){
+            parentNode=node;
+            node=node.leftNode;
+        }
+        //此时node是最小的
+        //判断node是否有右节点（不会有左节点）
+        if (node.rightNode==null){
+            //直接删除
+            parentNode.leftNode=null;
+        }else {
+            //有右节点 把该节点删了，右节点补上去
+            parentNode.leftNode=parentNode.leftNode.rightNode;
+        }
+//        delete(node.value);
+        return node.value;
     }
 
     /**

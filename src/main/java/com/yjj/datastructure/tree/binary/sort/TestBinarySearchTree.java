@@ -15,10 +15,15 @@ public class TestBinarySearchTree {
         binarySearchTree.inOrderTraversal();
         //查找
         TreeNode node=binarySearchTree.search(5);
-        System.out.println(node);
+//        System.out.println(node);
         //删除
         binarySearchTree.delete(5);
         TreeNode parent=binarySearchTree.searchParentNode(12);
         System.out.println(parent.value);
+
+        //-----删除----
+        binarySearchTree.delete(3);
+        binarySearchTree.inOrderTraversal();
+
     }
 }
