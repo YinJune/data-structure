@@ -11,17 +11,6 @@ public class Solution09 {
     }
 
     public int JumpFloorII(int target) {
-        if (target <= 2) {
-            return target;
-        }
-        int sum = 0;
-        int preOne = 2;
-        int preTwo = 1;
-        for (int i = 3; i <= target; i++) {
-            sum = preOne + preTwo;
-            preTwo = preOne;
-            preOne = sum;
-        }
-        return sum;
+        return 1<<(target-1);
     }
 }
